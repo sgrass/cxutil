@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>My JSP 'index.jsp' starting page</title>
+	<script type="text/javascript" src="jquery-1.3.2.js"></script>
+	<script type="text/javascript">
+		/*$(function() {
+			var standard = $.boxModel ? "标准w3c盒子模型" : "ie盒子模型";
+			if ($.browser.msie) 
+				alert("IE"+$.browser.version+"支持"+standard);
+			if ($.browser.mozilla)
+				alert("Mozilla"+$.browser.version+"支持"+standard);
+		});
+		*/
+		$(function () {
+			var arr = ["one","two","three","four","five","six"];
+			$.each(arr,function(index,value) {
+				$("p:eq(0)").append("<br>序号:"+index+" 值"+value);
+			});
+			
+			var obj = {1:"one",2:"two",3:"three",4:"four",5:"five",6:"six"};
+			$.each(obj,function(key,value) {
+				$("p:eq(1)").append("<br>key："+key+"---value："+value);
+			});
+			
+			$.each($.browser,function(key,value) {
+				$("p:eq(2)").append("<br>key："+key+"---value："+value);
+			});
+			
+			
+			var array = [0,9,8,7,6,5,4,3,2,1];
+			var rs = $.grep(array,function(value) {return value > 4;});
+			$("p:eq(3)").append("<br>原来数组"+array.join());
+			$("p:eq(3)").append("<br>判断大于4的"+rs.join());
+			
+			
+			var m1 = ["a","b","c","d","e"];
+			$("p:eq(4)").append("<br>原数据"+m1.join());
+			var m2 = $.map(m1,function(value,index) {return (value.toUpperCase()+index);});
+			$("p:eq(4)").append("<br>增加编号并且变换为大写"+m2.join());
+			var m3 = $.map(m2,function(value) {return (value+value);});
+			$("p:eq(4)").append("<br>双份值"+m3.join());
+		});
+	</script>
+  </head>
+  
+  <body>
+		<p><b>$.each函数(遍历数组)Demo1:</b></p>
+		<p><b>$.each函数(遍历对象)Demo2:</b></p>
+		<p><b>$.each函数Demo3未知对象:</b></p>
+		<p><b>$.grep函数(数组过滤):</b></p>
+		<p><b>$.map函数(数组转换):</b></p>
+  </body>
+</html>

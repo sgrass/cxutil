@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>jq_client.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="jquery-1.3.2.js"></script>
+    <script type="text/javascript">
+		   $(function() {
+		   	$("#btn1").click(function () {
+		   		var name = $("#name").val();
+					var passwd = $("#passwd").val();
+					var str = [name,passwd];
+					
+					$.ajax({
+						type: "POST",
+						url:"server.jsp",
+						dataType:"json",
+						data: {name:name,passwd:passwd,flag:'a'},
+						success : function(data) {
+							//获取json对象数组格式返回值，循环
+							for (var i=0; i<data.length; i++) {
+								alert(data[i].key+"*****"+data[i].value);
+							}
+						}
+					});
+		   	});
+		   	
+		   	
+		   	$("#btn2").click(function() {
+		   		$.ajax({
+		   			type: "POST",
+						url:"server.jsp",
+						dataType:"json",
+						data: {name:name,passwd:passwd,flag:'b'},
+						success : function(data) {	
+							//获取json数组格式返回值，循环
+							for (var i=0; i<data.length; i++) {
+								alert(data[i]);
+							}
+						}
+		   		});
+		   	});
+		   	
+		   	$("#btn3").click(function() {
+		   		$.ajax({
+		   			type: "POST",
+						url:"server.jsp",
+						dataType:"json",
+						//传递数组格式到服务器
+						data: {'param[]': ["aaa", "bbb","ccc"],flag:'c'},
+						success : function(data) {	
+							for (var i=0; i<data.length; i++) {
+								alert(data[i]);
+							}
+						}
+		   		});
+		   	});
+
+		   	$("#btn4").click(function() {
+		   		$.ajax({
+		   			type: "POST",
+						url:"server.jsp",
+						dataType:"json",
+						data: {flag:'d'},
+						success : function(data) {	
+							for (var i=0; i<data.length; i++) {
+								alert("姓名:"+data[i].name);
+								alert("年龄:"+data[i].info.age+"\n性别:"+data[i].info.sex);
+							}
+						}
+		   		});
+		   	});
+
+		   	$("#btn5").click(function() {
+		   		$.ajax({
+		   			type: "POST",
+						url:"server.jsp",
+						dataType:"json",
+						data: {flag:'e'},
+						success : function(data) {	
+							for (var i=0; i<data.length; i++) {
+								alert("学校:"+data[i].school);
+								for (var j=0; j<data[i].teacher.length; j++) {
+									alert("老师id:"+data[i].teacher[j].id+"\n性别:"+data[i].teacher[j].sex);
+								}
+							}
+						}
+		   		});
+		   	});
+		   	
+		   });
+    </script>
+  </head>
+  
+  <body>
+  	<input type="text" id="name"><br>
+ 		<input type="text" id="passwd"><br>
+ 		<input type="button" id="btn1" value="button1">
+ 		<input type="button" id="btn2" value="button2">
+ 		<input type="button" id="btn3" value="button3">
+ 		<input type="button" id="btn4" value="button4">
+ 		<input type="button" id="btn5" value="button5">
+ 		<div id="target"></div>
+ 	</body>
+</html>

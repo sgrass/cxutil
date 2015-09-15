@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<project_info>
+		<department_name>aaa
+		bbb
+		ccc
+		ddd
+		eee
+		</department_name>
+		<contact_phone>55555555</contact_phone>
+		<contact_mobile>13812345678</contact_mobile>
+		<contact_email>abc@hotmail.com</contact_email>
+	</project_info>
+	<database>   
+	   <property name="driver"                value="net.sourceforge.jtds.jdbc.Driver"/>
+	   <property name="url"                   value="jdbc:jtds:sqlserver://localhost:1433/pubs"/>
+	   <property name="userid"                value="sa"/>
+	   <property name="password"              value="sa"/>   
+	   <property name="table"                 value="authors"/>   
+	</database>
+</project>

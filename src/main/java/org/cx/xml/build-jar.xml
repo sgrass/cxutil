@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="shen3infobase_client.jar" default="pack">
+	<property name="classes.dir" value="../WebRoot/WEB-INF/classes" />
+	<property name="dist.dir" value="../dist" />
+	<target name="pack" description="make .jar file">
+		<mkdir dir="${dist.dir}" />
+		<jar destfile="${dist.dir}/shen3spnet_server.jar" basedir="${classes.dir}">
+			<include name="wfc/**/*.*" />
+			<include name="com/wondersgroup/**/*.*" />
+		</jar>
+	</target>
+</project>

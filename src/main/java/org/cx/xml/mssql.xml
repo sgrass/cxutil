@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="gb2312" ?>   
+<database>   
+   <property name="driver"    value="net.sourceforge.jtds.jdbc.Driver"/>
+   <property name="url"       value="jdbc:jtds:sqlserver://localhost:1433/pubs"/>
+   <property name="userid"    value="sa"/>
+   <property name="password"  value="sa"/>   
+   <property name="table"     value="authors"/>   
+</database>

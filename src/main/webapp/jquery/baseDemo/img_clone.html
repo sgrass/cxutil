@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<html>
+  <head>
+    <title>My JSP 'index.jsp' starting page</title>
+	<script type="text/javascript" src="jquery-1.3.2.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("img:eq(1)").clone().appendTo($("p")); //克隆第二张图片到每个p标签之后
+			$("img:eq(0)").clone().appendTo($("p:eq(0)")); //克隆第一章图片到第一个p标签之后
+			$("img:eq(0)").clone().appendTo($("p:gt(0)")); //克隆第一章图片到第一个p标签之后的所有p标签之后
+		});
+
+		$(function (){
+			var first;
+			$("img").bind("click",first = function() {  //给img绑定一个click事件
+				$("#show").append("<div>点击事件一</div>");
+			}).bind("click",function() {
+				$("#show").append("<div>点击事件二</div>");
+			}).bind("click",function() {
+				$("#show").append("<div>点击事件三</div>");
+			});
+			
+			$("input[type=button]").click(function () {
+				$("img").unbind("click",first); //移除函数first的绑定
+			})
+		});
+	</script>
+  </head>
+  
+  <body>
+  	<center>
+			<img src="0.jpg" width="100" height="100">
+			<img src="1.jpg" width="100" height="100">  
+			<input type="button" value="移除事件">	
+			<div id="show"></div> 
+			<hr>
+			<p><img src="2.jpg" width="100" height="100"></p>
+			<p><img src="2.jpg" width="100" height="100"></p>
+			<p><img src="2.jpg" width="100" height="100"></p>
+  	</center>
+  </body>
+</html>

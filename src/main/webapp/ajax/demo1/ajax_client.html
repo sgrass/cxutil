@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>ajax_client.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script language="javascript">
+		var http_request;
+		function createXMLHTTPRequest() {
+			if(window.ActiveXObject) {
+				http_request = new ActiveXObject("Microsoft.XMLHTTP");
+			} 
+			if (window.XMLHttpRequest) {
+				http_request = new XMLHttpRequest();
+				if (http_request.overrideMimeType) {//设置mime级别
+					http_request.overrideMimeType("text/xml");
+				}
+			}
+			if (!http_request) { //异常，创建对象实例失败
+				window.alert("不能创建XMLHTTPRequest实例");
+				return false;
+			}
+		}
+		
+		function createFormValue() {
+			var name = document.getElementById("name").value;
+			var passwd = document.getElementById("passwd").value;
+			var formValue = "name="+name+"&passwd="+passwd;
+			return encodeURI(encodeURI(formValue)); //处理中文问题
+		}
+		
+		function get_send_request(url) {//初始化、指定处理函数、发送请求的函数
+			//开始初始化XMLHttpRequest对象
+			createXMLHTTPRequest();
+			url +="?"+createFormValue(); 
+			http_request.onreadystatechange = processRequest;
+			alert(url);
+			http_request.open("GET",url,true);
+			http_request.onreadystatechange = processRequest;
+			http_request.send(null);			
+		}
+		
+		function post_send_request(url) {//初始化、指定处理函数、发送请求的函数
+			//开始初始化XMLHttpRequest对象
+			createXMLHTTPRequest();
+			http_request.open("POST",url,true);
+			http_request.onreadystatechange = processRequest; //指定回调函数
+			http_request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			http_request.send(createFormValue());			
+		}
+
+		//处理返回信息的函数
+		function processRequest() {
+			if (http_request.readystate == 4) { //判断对象状态
+				if (http_request.status == 200) {
+				//信息已成功返回，开始处理信息
+				var mDiv = document.getElementById("dis");
+				mDiv.innerHTML = decodeURI(http_request.responseText); //解码
+				} else {
+					alert("您所请求页面有异常"+http_request.status);
+				}
+			} 
+		}
+	</script>
+  </head>
+  
+  <body>
+  	<form>
+  		<input type="text" name="name"><br>
+  		<input type="text" name="passwd"><br>
+  		<input type="button" value="get" onclick="get_send_request('ajax_server.jsp');">
+  		<input type="button" value="post" onclick="post_send_request('ajax_server.jsp');">
+  	</form>
+  	<div id="dis"></div>
+  </body>
+</html>

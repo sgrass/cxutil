@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>jq_client.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="jquery-1.3.2.js"></script>
+    
+    <script type="text/javascript">
+    	$(function () {
+	    	$("#jq1").click(function () {
+	    		$("#target").load("jq_server.jsp");
+	    	});
+    	});
+    	
+    function createFormValue() {
+			var name = encodeURI($("#name").val());
+			var passwd = encodeURI($("#passwd").val());
+			//组成对象形式
+			var formValue = {name:name,passwd:passwd};
+			return formValue;
+		}
+		
+    	function get_send_request(url) {
+    		$.get(url,createFormValue(),function (data) {
+    			$("#target").html(decodeURI(data));
+    		});
+    	}
+    	
+    	function post_send_request(url) {
+    		$.post(url,createFormValue(),function (data) {
+    			$("#target").html(decodeURI(data));
+    		});
+    	}
+    </script>
+  </head>
+  
+  <body>
+  	<input id="jq1" type="button" value="jquery异步"><br>
+  	
+  	
+  	<input type="text" id="name"><br>
+ 		<input type="text" id="passwd"><br>
+ 		<input type="button" value="get" onclick="get_send_request('jq_server.jsp');">
+ 		<input type="button" value="post" onclick="post_send_request('jq_server.jsp');">
+ 		
+  	<div id="target"></div>
+  </body>
+</html>
