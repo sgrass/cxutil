@@ -65,7 +65,7 @@ public class XmlWrite {
 				TransformerFactory tf=TransformerFactory.newInstance();
 				Transformer t=tf.newTransformer();
 	
-				t.transform(new DOMSource(d), new StreamResult(new FileOutputStream("D:/test.xml")));
+				t.transform(new DOMSource(d), new StreamResult(new FileOutputStream("src/main/java/org/cx/xml/test.xml")));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gb2312" ?>   
+<class>
+	<student>
+		<id type="int">1</id>
+		<name type="string">aaa</name>
+	</student>
+	<student>
+		<id>2</id>
+		<name>bbb</name>
+	</student>
+</class>
