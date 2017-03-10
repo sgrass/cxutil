@@ -7,50 +7,50 @@
 	<script type="text/javascript" src="jquery-1.3.2.js"></script>
 	<script type="text/javascript">
 		/*$(function() {
-			var standard = $.boxModel ? "±ê×¼w3cºĞ×ÓÄ£ĞÍ" : "ieºĞ×ÓÄ£ĞÍ";
+			var standard = $.boxModel ? "æ ‡å‡†w3cç›’å­æ¨¡å‹" : "ieç›’å­æ¨¡å‹";
 			if ($.browser.msie) 
-				alert("IE"+$.browser.version+"Ö§³Ö"+standard);
+				alert("IE"+$.browser.version+"æ”¯æŒ"+standard);
 			if ($.browser.mozilla)
-				alert("Mozilla"+$.browser.version+"Ö§³Ö"+standard);
+				alert("Mozilla"+$.browser.version+"æ”¯æŒ"+standard);
 		});
 		*/
 		$(function () {
 			var arr = ["one","two","three","four","five","six"];
 			$.each(arr,function(index,value) {
-				$("p:eq(0)").append("<br>ĞòºÅ:"+index+" Öµ"+value);
+				$("p:eq(0)").append("<br>åºå·:"+index+" å€¼"+value);
 			});
 			
 			var obj = {1:"one",2:"two",3:"three",4:"four",5:"five",6:"six"};
 			$.each(obj,function(key,value) {
-				$("p:eq(1)").append("<br>key£º"+key+"---value£º"+value);
+				$("p:eq(1)").append("<br>keyï¼š"+key+"---valueï¼š"+value);
 			});
 			
 			$.each($.browser,function(key,value) {
-				$("p:eq(2)").append("<br>key£º"+key+"---value£º"+value);
+				$("p:eq(2)").append("<br>keyï¼š"+key+"---valueï¼š"+value);
 			});
 			
 			
 			var array = [0,9,8,7,6,5,4,3,2,1];
 			var rs = $.grep(array,function(value) {return value > 4;});
-			$("p:eq(3)").append("<br>Ô­À´Êı×é"+array.join());
-			$("p:eq(3)").append("<br>ÅĞ¶Ï´óÓÚ4µÄ"+rs.join());
+			$("p:eq(3)").append("<br>åŸæ¥æ•°ç»„"+array.join());
+			$("p:eq(3)").append("<br>åˆ¤æ–­å¤§äº4çš„"+rs.join());
 			
 			
 			var m1 = ["a","b","c","d","e"];
-			$("p:eq(4)").append("<br>Ô­Êı¾İ"+m1.join());
+			$("p:eq(4)").append("<br>åŸæ•°æ®"+m1.join());
 			var m2 = $.map(m1,function(value,index) {return (value.toUpperCase()+index);});
-			$("p:eq(4)").append("<br>Ôö¼Ó±àºÅ²¢ÇÒ±ä»»Îª´óĞ´"+m2.join());
+			$("p:eq(4)").append("<br>å¢åŠ ç¼–å·å¹¶ä¸”å˜æ¢ä¸ºå¤§å†™"+m2.join());
 			var m3 = $.map(m2,function(value) {return (value+value);});
-			$("p:eq(4)").append("<br>Ë«·İÖµ"+m3.join());
+			$("p:eq(4)").append("<br>åŒä»½å€¼"+m3.join());
 		});
 	</script>
   </head>
   
   <body>
-		<p><b>$.eachº¯Êı(±éÀúÊı×é)Demo1:</b></p>
-		<p><b>$.eachº¯Êı(±éÀú¶ÔÏó)Demo2:</b></p>
-		<p><b>$.eachº¯ÊıDemo3Î´Öª¶ÔÏó:</b></p>
-		<p><b>$.grepº¯Êı(Êı×é¹ıÂË):</b></p>
-		<p><b>$.mapº¯Êı(Êı×é×ª»»):</b></p>
+		<p><b>$.eachå‡½æ•°(éå†æ•°ç»„)Demo1:</b></p>
+		<p><b>$.eachå‡½æ•°(éå†å¯¹è±¡)Demo2:</b></p>
+		<p><b>$.eachå‡½æ•°Demo3æœªçŸ¥å¯¹è±¡:</b></p>
+		<p><b>$.grepå‡½æ•°(æ•°ç»„è¿‡æ»¤):</b></p>
+		<p><b>$.mapå‡½æ•°(æ•°ç»„è½¬æ¢):</b></p>
   </body>
 </html>
