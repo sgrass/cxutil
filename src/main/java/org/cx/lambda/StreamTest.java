@@ -1,4 +1,4 @@
-package org.cx.lamada;
+package org.cx.lambda;
 
 import java.util.Arrays;
 import java.util.Comparator;
