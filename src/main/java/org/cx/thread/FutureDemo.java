@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author grass
  * @date 2017/11/15
  */
-public class CallableDemo {
+public class FutureDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         //线程池是线程复用
