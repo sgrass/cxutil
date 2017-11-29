@@ -1,12 +1,8 @@
 package org.cx.thread.java8;
 
-import sun.awt.SunHints;
-
-import javax.management.StringValueExp;
 import java.time.LocalDate;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Supplier;
 
 /**
  * @author grass
@@ -60,9 +56,7 @@ public class CompletableFutureDemo {
         System.out.println("starting...");
     }
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-
-
+    public static void demo4() {
         //合并操作，异步
         CompletableFuture combinedCompletableFuture = CompletableFuture.supplyAsync(()-> {
 
@@ -89,6 +83,12 @@ public class CompletableFutureDemo {
         while (!combinedCompletableFuture.isDone()) {
 
         }
+    }
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+
+
     }
 
 

@@ -1,7 +1,5 @@
 package org.cx.serial.simple;
 
-import sun.jvm.hotspot.oops.FieldType;
-
 import java.io.Serializable;
 
 /**

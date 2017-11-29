@@ -1,7 +1,5 @@
 package org.cx.thread.volatilee;
 
-import sun.applet.Main;
-
 import java.util.concurrent.TimeUnit;
 
 /**
