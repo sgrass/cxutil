@@ -4,6 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * HashMap 1.8 理解
+ *
+ * 阈值  一个节点上的数据会根据阈值转换为treeNode  TREEIFY_THRESHOLD=8  UNTREEIFY_THRESHOLD=6
+ *
+ * hash值越分散越不容易重复
+ * 如：(h = key.hashCode()) ^ (h >>> 16);  //高位和低位异或
+ * ^异或 相同结果为0，不同结果为1
+ * >>右位移，去掉右边位数，>>>三个是无符号，>>两个是有符号
+ *
+ *
+ * if ((p = tab[i = (n - 1) & hash]) == null)
+ * 这句 i=(n-1)& hash 代替取模运算，n需要是2的n次幂
+ *
+ * e.hash & oldCap
+ *
+ *
+ * HashMap1.7 类似
  * 用来将一个数的各二进制位全部右移若干位.例如:a   =   a>>2,使a的各二进制位右移两位,移到右端的低位被舍弃,最高位则移入原来高位的值.
  * 如:a   =   00110111,则a>>2=00001101,b=11010011,则b>>2   =   11110100
  * 右移一位相当于除2   取商,而且用右移实现除法比除法运算速度要快

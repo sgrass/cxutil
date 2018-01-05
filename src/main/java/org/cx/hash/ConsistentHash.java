@@ -1,7 +1,4 @@
-package org.cx.util;
-
-import com.google.common.hash.HashFunction;
-import org.apache.poi.ss.formula.functions.T;
+package org.cx.hash;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
