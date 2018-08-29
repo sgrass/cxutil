@@ -4,6 +4,10 @@ public class Mobile {
 	private String mobileBrand;
 	
 	private Integer price;
+
+	public Mobile() {
+
+	}
 	
 	public Mobile(String mobileBrand, Integer price) {
 		this.mobileBrand = mobileBrand;
