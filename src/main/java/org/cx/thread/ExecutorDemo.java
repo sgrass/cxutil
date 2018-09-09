@@ -20,6 +20,8 @@ import java.util.concurrent.Executors;
  *   主要问题是线程数最大数是Integer.MAX_VALUE，可能会创建数量非常多的线程，甚至OOM。
  *
  *
+ * ThreadPoolExecutor 参数 核心线程数，最大线程数，超时时间，保存queue，AbortPolicy拒绝策略直接抛异常(4种)
+ *
  * Positive example 1：
  *     //org.apache.commons.lang3.concurrent.BasicThreadFactory
  *     ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,

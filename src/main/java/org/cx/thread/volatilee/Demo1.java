@@ -16,7 +16,12 @@ public class Demo1 {
      * volatile只保证单一操作原子性，而不保证复合操作原子性。所以就算对i加了volatile，多线程加加也还是不对
      */
     private void add() {
-        //i++是复合操作
+        /**
+         * i++是复合操作,三步操作 javap如下
+         * getstatic
+         * iadd
+         * putstatic
+         */
         i++;
     }
 
