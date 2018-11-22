@@ -24,6 +24,9 @@ import java.util.concurrent.RecursiveTask;
  * 任务分割出的子任务会添加到当前工作线程所维护的双端队列中，进入队列的头部。
  * 当一个工作线程的队列里暂时没有任务时，它会随机从其他工作线程的队列的尾部获取一个任务。
  *
+ * invoke()  同步，有返回结果 （会阻塞）
+ * execute() 异步，无返回结果
+ * submit()  异步，有返回结果 （返回Future<T>）
  * @author grass
  * @date 2017/11/15
  */
