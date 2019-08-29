@@ -26,6 +26,7 @@ public class CompletableFutureDemo {
 
     public static void demo2() throws ExecutionException, InterruptedException {
         //异步执行, 阻塞操作
+        //runnable 方式执行，如果参数传了executor则使用其来异步执行，不传则使用ForkJoinPool.commonPool()
         CompletableFuture asyncCompletableFuture = CompletableFuture.runAsync(()->{
             System.out.println("hello world");
         });
@@ -38,7 +39,7 @@ public class CompletableFutureDemo {
     }
 
     public static void demo3() throws ExecutionException, InterruptedException {
-        //supplyAsync方式异步执行，阻塞操作
+        //supplyAsync方式异步执行，阻塞操作    supplyAsync有返回值
 //        CompletableFuture supplyAsyncCompletableFuture = CompletableFuture.supplyAsync(new Supplier<String>() {
 //            @Override
 //            public String get() {
