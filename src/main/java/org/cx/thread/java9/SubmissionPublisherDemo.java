@@ -1,15 +1,18 @@
+/*
 package org.cx.thread.java9;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Flow;
 import java.util.concurrent.SubmissionPublisher;
 
+*/
 /**
  *
  * {@link java.util.concurrent.SubmissionPublisher}
  * @author grass
  * @date 2017/11/19
- */
+ *//*
+
 public class SubmissionPublisherDemo {
 
     public static void main(String[] args) throws InterruptedException {
@@ -85,3 +88,4 @@ public class SubmissionPublisherDemo {
     }
 
 }
+*/
