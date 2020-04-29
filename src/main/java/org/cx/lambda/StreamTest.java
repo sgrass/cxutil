@@ -1,12 +1,25 @@
 package org.cx.lambda;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -68,6 +81,25 @@ public class StreamTest {
         mobileList.stream().skip(2).forEach(System.out::println);
     }
 
+    public static void find() {
+        //是否全部大于100
+        boolean flag = mobileList.stream().allMatch(p -> p.getPrice() > 100);
+        System.out.println(flag);
+        //只要有一个大于100
+        boolean flag2 = mobileList.stream().anyMatch(p -> p.getPrice() > 100);
+        System.out.println(flag2);
+        //没有一个小于100
+        boolean flag3 = mobileList.stream().noneMatch(p -> p.getPrice() < 100);
+        System.out.println(flag3);
+
+
+    }
+
+    public static void listUtils() {
+        //list string转int
+        Lists.newArrayList("1","2","3","4","5").stream().mapToInt(Integer::parseInt).forEach(System.out::println);
+    }
+
     /**
      * 循环
      */
@@ -119,21 +151,20 @@ public class StreamTest {
      * 排序
      */
     public static void sort() {
-        Set<Integer> number = new HashSet<Integer>(Arrays.asList(4, 3, 5, 2, 1));
-        List<Integer> sortNumber = number.stream().sorted().collect(Collectors.toList());
-        sortNumber.stream().forEach(str -> System.out.println(str));
-
+        //Set直接排序
+        Sets.newHashSet(4, 3, 5, 2, 1).stream().sorted().collect(Collectors.toList()).forEach(System.out::println);
 
         //limit在sorted之前时，并不知道排序顺序
-        mobileList.stream().sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
+        mobileList.stream().sorted((x, y) -> x.getPrice().compareTo(y.getPrice()))
                 .limit(2).collect(Collectors.toList()).forEach(System.out::println);
+
     }
 
     /**
      * reduce 累加 拼接
      * 第一个参数identity 起始值存在时返回具体对象，不存在时返回{@link Optional}
      */
-    public static void reduceTest() {
+    public static void reduce() {
         //identity 起始值0
         int count = Stream.of(1, 2, 3).reduce(0, (acc, element) -> acc + element);
         Integer sum = Stream.of(1, 2, 3).reduce(0, Integer::sum);
@@ -166,13 +197,10 @@ public class StreamTest {
             System.out.println(text);
         }
 
+        //list转map 为空则使用空值 避免出错
+        Optional.ofNullable(mobileList).orElseGet(Collections::emptyList).stream()
+                .collect(Collectors.toMap(Mobile::getMobileBrand, Function.identity())).forEach((k,v)-> System.out.println(k));
 
-        boolean flag = mobileList.stream().allMatch(p -> p.getPrice() > 100);
-        boolean flag2 = mobileList.stream().anyMatch(p -> p.getPrice() > 100);
-        boolean flag3 = mobileList.stream().noneMatch(p -> p.getPrice() < 100);
-        System.out.println(flag);
-        System.out.println(flag2);
-        System.out.println(flag3);
     }
 
     public static void newThread() {
@@ -184,7 +212,7 @@ public class StreamTest {
      * Supplier实例传递给 Stream.generate() 生成的 Stream，默认是串行（相对 parallel 而言）但无序的（相对 ordered 而言）。
      * 由于它是无限的，在管道中，必须利用 limit 之类的操作限制 Stream 大小。
      */
-    public static void generate() {
+    public static void supplier() {
         Random seed = new Random();
         Supplier<Integer> random = seed::nextInt;
         Stream.generate(random).limit(10).forEach(System.out::println);
@@ -211,6 +239,7 @@ public class StreamTest {
         System.out.println("false-->" + map.get(false));
     }
 
+
     public static void main(String[] args) {
 //		extract();
 //		loop();
@@ -223,6 +252,9 @@ public class StreamTest {
 //        generate();
 //        groupby();
 
+//        listUtils();
+//        find();
+        optional();
     }
 
 
